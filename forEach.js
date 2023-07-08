@@ -4,7 +4,7 @@
 
 // Q1. Write a function to print all elements of an array using forEach().
 
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,-1];
 
 function consoleAllEl(arr){
     arr.forEach(element => {
@@ -86,7 +86,7 @@ console.log(checking(numbers));
 
 // Q7. Write a function to find the index of a given element in an array using forEach().
 
-function finIndex (arr,value){
+function findIndex (arr,value){
     let indexValue = 0;
    arr.forEach((element,index)=>{
     if(element == value){
@@ -95,7 +95,7 @@ function finIndex (arr,value){
    });
    return indexValue
 }
-console.log(finIndex(numbers,5));
+console.log(findIndex(numbers,5));
 
 
 // Q8. Write a function to calculate the product of all elements in an array using forEach().
@@ -130,4 +130,209 @@ console.log(doubleElement(numbers));
 
 //  ================================================= BASIC ENDS HERE AND INTERMEDIATE STARTS HERE ==========================================================
 
+
+let number2 = [1,3,2,4,5,6,7,8,9,10,3,5,4,7,6,1,8,5,6,3,1,9];
+
+// Q1 Write a function to remove all duplicate elements from an array using forEach().
+
+function removeDuplicate(arr){
+    let removedElement = [];
+    arr.forEach((value)=>{
+        if(!removedElement.includes(value)){
+            removedElement.push(value)
+        }
+    });
+    return removedElement
+}
+console.log(removeDuplicate(number2));
+
+
+// Q2. Write a function to find the first occurrence of an element in an array using forEach().
+
+function firstOccurrence(arr,value){
+    let foundIndex = -1;
+    arr.forEach((element,index)=>{
+        if(element == value && foundIndex == -1){
+            foundIndex = index
+        }
+    });
+    return foundIndex
+}
+console.log(firstOccurrence(number2,1));
+
+// Q3. Write a function to find the second smallest element in an array using forEach().
+
+function secondSmallestEl(arr){
+  let smallestNum = Math.min(...arr);
+  arr.forEach((value,index)=>{
+    if(value == smallestNum)(
+        arr.splice(index,1)
+    )
+  })
+  smallestNum = Math.min(...arr)
+  return smallestNum
+}
+console.log(secondSmallestEl(number2));
+
+
+// Q4. Write a function to concatenate all elements of an array into a single string using forEach().
+
+function  concatenateAllEl(arr){
+    let convertingArrToStr =  "";
+    arr.forEach((value)=>{
+        convertingArrToStr += value
+    })
+    return convertingArrToStr;
+}
+console.log(concatenateAllEl(numbers));
+
+// Q5. Write a function to remove all elements from an array that satisfy a given condition using forEach().
+let condition = (element) => element %2 == 0;
+function removedSatisfyingElement(arr,conditions){
+    arr.forEach((value,index)=>{
+        if(conditions(value)){
+            arr.splice(index,1)
+        }
+    })
+  return arr
+}
+console.log(removedSatisfyingElement(numbers,condition));
+
+
+// Q6. Write a function to find the sum of the squares of all even elements in an array using forEach().
+
+function evenSquare(arr){
+    let sum = 0
+    arr.forEach((element)=>{
+        if(element%2==0){
+            sum+= element*element
+        }
+    })
+    return sum
+}
+console.log(evenSquare([1,2,3,4,5,6,7,8,9,10]));
+
+// Q7. Write a function to check if all elements in an array are equal to a given value using forEach().
+
+function isAllEqual(arr,value){
+    let isEqual = true;
+    arr.forEach((element)=>{
+        if(element !== value){
+            isEqual = false
+        }
+    })
+    return isEqual
+}
+console.log(isAllEqual(numbers,1));
+
+// Q8. Write a function to find the first positive element in an array using forEach().
+
+function firstPositiveElement(arr){
+    let firstElement = null;
+    arr.forEach((value)=>{
+        if(value > 0 && firstElement=== null){
+            firstElement = value
+        }
+    })
+    return firstElement
+}
+console.log(firstPositiveElement(numbers));
+
+// Q9.Write a function to find the number of times a given element appears in an array using forEach().
+
+function elAppearingInEl(arr,target){
+    let counter = 0;
+    arr.forEach((value)=>{
+        if(value == target){
+            counter++
+        }
+    });
+    return counter
+}
+console.log(elAppearingInEl(numbers,1));
+
+// Q10. Write a function to find the longest string in an array using forEach().
+
+let names = ["HTML", "JAVASCRIPT", "C++", "JAVA"];
+
+function longestNames(arr){
+    let longest = "";
+    arr.forEach((value)=>{
+        if(value > longest){
+            longest = value
+        }
+    })
+    return longest
+}
+console.log(longestNames(names));
+
+
+// Q11. Write a function to filter out all negative elements from an array using forEach().
+let number3 = [-1,-2,-3,-4,5,6,7,8,9]
+
+function filterAllNagative(arr){
+    let negative = [];
+    arr.forEach((value)=>{
+        if(value < 0){
+            negative.push(value)
+        }
+    })
+    return negative
+}
+console.log(filterAllNagative(number3));
+
+// Q12. Write a function to find the smallest element in an array that is greater than a given value using forEach().
+
+let number4 = [1,2,3,4,5,6,7,8,9,10]
+
+function smallestNum(arr){
+    let smallest = Infinity;                   
+    arr.forEach((element)=>{
+        if(element < smallest){
+            smallest = element
+        }
+    })
+    return smallest
+}
+
+console.log(smallestNum(number4));
+
+// Q13.  Write a function to reverse the order of elements in an array using forEach()
+
+function reverseArray(arr){
+    const reversedArray = [];
+    arr.forEach((_, index, originalArray)=>{
+        const reverseIndex = originalArray.length - 1 - index
+        reversedArray.push(originalArray[reverseIndex])
+        console.log(reverseIndex);
+    });
+    return reversedArray
+}
+console.log(reverseArray(number2));
+
+
+//  Q14. Write a function to remove all elements from an array that are divisible by a given value using forEach().
+
+
+function removedElementDivisible(arr,number){
+    let divisiblenumber = [];
+    arr.forEach((element)=>{
+        if(element%number==0){
+            divisiblenumber.push(element)
+        }
+    });
+    return divisiblenumber
+}
+console.log(removedElementDivisible(number2,4));
+
+// Q15. Write a function to transform an array into an object where the elements are keys and their counts are values using forEach().
+
+function keyValue(arr){
+    let object = {};
+    arr.forEach((value)=>{
+        object[value] = (object[value] || 0) + 1
+    });
+    return object
+}
+console.log(keyValue(number2));
 
