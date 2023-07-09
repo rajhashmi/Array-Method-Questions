@@ -424,3 +424,79 @@ console.log(smallestPositiveNum(number3));
     return smallestIndex;
  }
  console.log(smallestNumIndex([2,3,4,5,3,6,7,1,8]));
+
+
+let remove = [1,2,3,4,5,6];
+
+ function push(arr,element){
+    arr[arr.length] = element
+    return arr
+ }
+ console.log(push(remove,7));
+
+function pop(arr){
+    arr.length = arr.length - 1;
+    return arr
+}
+console.log(pop([1,2,3,4,5,6]));
+
+
+
+const letters = ['a', 'b', 'c', 'd', 'e', 'a', 'b', 'c', 'd', 'e'];
+let counter = {};
+
+letters.forEach((element)=>{
+    if(counter[element]){
+        counter[element]++
+    }else{
+        counter[element] = 1
+    }
+})
+console.log(counter);
+
+let newArr = new Array(100).fill(1);
+console.log(newArr);
+
+
+const indices = [];
+const array3 = ["a", "b", "a", "c", "a", "d"];
+const element = 'a';
+let idx = array3.indexOf(element);
+while (idx !== -1) {
+    indices.push(idx);
+    idx = array3.indexOf(element, idx + 1); // !!!
+}
+
+console.log(indices);
+
+
+
+function squareElements(arr){
+    let square = 0;
+    arr.forEach((value)=>{
+        if(value%2 ==0){
+            square += value * value
+        }
+    })
+    return square
+}
+console.log(squareElements([2,4]));
+
+
+function reverseArrays(arr){
+    const reverse = [];
+  arr.forEach((_,index,arrs)=>{
+    const reverseIndex = arrs.length - 1 - index;
+    reverse.push(arrs[reverseIndex]);
+  });
+};
+
+
+
+const cpy = [1, 2, 3, 4, 5];
+
+cpy.copyWithin(0, 3);
+console.log(cpy);
+
+let oneToHun = Array.from({length:1},(_,idx)=> idx+1);
+console.log(oneToHun);
