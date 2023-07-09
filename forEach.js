@@ -336,3 +336,91 @@ function keyValue(arr){
 }
 console.log(keyValue(number2));
 
+
+// Q16. Write a function to check if an array is sorted in ascending order using forEach().
+
+function isArraySort(arr){
+    let isSort = true;
+    let previousValue = arr[0];
+    arr.forEach((value)=>{
+        if(value < previousValue){
+            isSort = false;
+        }
+        console.log(previousValue,value);
+        previousValue = value;
+        console.log(previousValue,value);
+
+    })
+    return isSort;
+}
+console.log(isArraySort([1,2,3,4,5,6,7,8,9,10]));
+
+// Q17.  Write a function to remove all falsy values from an array using forEach().
+
+let falsyValue = [true,false,-1,"",null,undefined,1,2,3,4,-5,NaN,-0]
+
+function removeFalsyValue(arr){
+    let truthyValue = [];
+    arr.forEach((value)=>{
+        if(value){
+            truthyValue.push(value)
+        }
+    })
+    return truthyValue
+}
+console.log(removeFalsyValue(falsyValue));
+
+
+// Q18. Write a function to find the smallest positive integer that is not present in an array using forEach().
+
+function smallestPositiveNum(arr){
+    let smallest = [];
+    arr.forEach((value,index,array)=>{
+       if(value > 0){
+        smallest.push(value)
+       }
+    })
+    console.log(smallest);
+    return Math.min(...smallest)
+}
+console.log(smallestPositiveNum(number3));
+
+
+// Q19.  Write a function to create a new array that contains only the elements that appear more than once in the original array using forEach().
+
+
+ function findDublicate(arr){
+    const countMap = {};
+    const duplicate = [];
+
+    arr.forEach((element)=>{
+      if(countMap[element]){
+        countMap[element]++
+      }else{
+        countMap[element] = 1
+      }
+    })
+    arr.forEach((element)=>{
+        if(countMap[element] > 1 && !duplicate.includes(element)){
+            duplicate.push(element)
+        }
+    })
+    return duplicate;
+ }
+ console.log(findDublicate([1,2,3,4,5,6,7,8,9,4,3,6,5,8]));
+
+
+//  Q20. Write a function to find the index of the smallest element in an array using forEach().
+
+ function smallestNumIndex(arr){
+    let smallestIndex = 0;
+    let firstElement = arr[0]
+    arr.forEach((element,index,array)=>{
+        if(element<firstElement){
+            firstElement = element;
+            smallestIndex = index
+        }
+    });
+    return smallestIndex;
+ }
+ console.log(smallestNumIndex([2,3,4,5,3,6,7,1,8]));
