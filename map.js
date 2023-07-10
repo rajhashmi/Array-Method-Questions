@@ -109,6 +109,3 @@ console.log(productOfEachPairs());
 
 
 //  ================================================= BASIC ENDS HERE AND INTERMEDIATE STARTS HERE ==========================================================
-
-
-
