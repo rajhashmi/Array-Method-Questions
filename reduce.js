@@ -130,3 +130,220 @@ function findLargestIndex(){
     return arr.indexOf(largeIndex)
 }
 console.log(findLargestIndex());
+
+
+// ================================================= BASIC ENDS HERE AND INTERMEDIATE STARTS HERE ==========================================================
+
+// Q1. Write a function to find the longest word in an array using reduce().
+
+function longestWord(){
+    let arr = ["javaScript", "kotlin", "java", "c++"];
+    let longWord = arr.reduce((previousValue,currentValue)=>{
+        if(currentValue.length > previousValue.length){
+            previousValue = currentValue
+        }
+        return previousValue
+    },"")
+    return longWord;
+};
+console.log(longestWord());
+
+
+// Q2. Write a function to create a new array that contains the elements of the original array sorted in ascending order using reduce().
+
+
+
+// ==========================
+
+
+// Q3. Write a function to check if an array is sorted in ascending order using reduce().
+
+function isSorted(){
+    let arr = [1,2,3,4,5];
+    let checkSort = arr.reduce((previousValue,currentValue,index, arr)=>{
+        if(currentValue < arr[index - 1]){
+            return false
+        }
+        return previousValue
+    },true)
+    return checkSort
+}
+console.log(isSorted());
+
+
+// Q4. Write a function to find the sum of the squares of all elements in an array using reduce().
+
+function sumOfAllElement(){
+    let arr = [2,3 ];
+    let result = arr.reduce((previousValue,currentValue)=>{
+        return previousValue += currentValue * currentValue;
+    },0)
+    return result;
+}
+console.log(sumOfAllElement());
+
+// Q5. Write a function to create a new array that contains the elements from the original array in reverse order using reduce()
+
+function reverseFunc(){
+    let arr = [7,6,5,4,3,2,1];
+    let reverse = arr.reduce((previousValue,currentValue,index,arr)=>{
+        let reverseIndex = arr.length - 1 - index
+        previousValue.push(arr[reverseIndex]);
+        return previousValue
+    },[])
+    return reverse
+}
+console.log(reverseFunc());
+
+// ==================== Another Method To Reverse ==================
+ function reverseFuncTwo(){
+    let arr = [1,2,3,4,5];
+    let reverse = arr.reduce((previousValue,currentValue)=>{
+        previousValue.unshift(currentValue)
+        return previousValue
+    },[]);
+    return reverse;
+};
+console.log(reverseFuncTwo());
+
+// Q6. Write a function to check if an array contains a specific element using reduce().
+
+function containSpecificElement(){
+    let arr = [14,2,3,4,5,6,7,8,9,10];
+    let specificElement = arr.reduce((previousValue,currentValue)=>{
+        if(currentValue%2==0){
+            previousValue.push(currentValue)
+        }
+        return previousValue
+    },[])
+    return specificElement;
+}
+console.log(containSpecificElement());
+
+// Q7. Write a function to find the first non-repeating element in an array using reduce().
+
+function firstNonRepeating(){
+    let arr = [1,4,1,2,2,3,3,4,5,5,0];
+    let check = arr.reduce((previousValue,currentValue)=>{
+        previousValue[currentValue] = (previousValue[currentValue] || 0) + 1;
+        return previousValue
+    },{})
+    console.log(check);
+    return arr.find(element => check[element] === 1)
+}
+console.log(firstNonRepeating());
+
+
+// Q8. Check if a list contains any negative numbers using reduce().
+
+ function containAnyNegativeNum(){
+    let arr = [-1,2,3,4,5,6,7,8,9,10];
+    return arr.reduce((previousValue,currentValue)=>{
+        if(currentValue < 0){
+            return true
+        }
+        return previousValue
+    },false)
+ }
+ console.log(containAnyNegativeNum());
+
+
+//  Q9. Capitalize the first letter of each word in a sentence using reduce().
+
+function CapitalizeFirstLetter(){
+    let arr = ["java","kotlin","c++","javaScript","python"];
+    return arr.reduce((previousValue,currentValue, index)=>{
+        previousValue.push(currentValue.charAt(0).toUpperCase() + arr[index].slice(1))
+        return previousValue
+    },[])
+}
+console.log(CapitalizeFirstLetter());
+
+
+// Q10. Find the number of uppercase letters in a sentence using reduce().
+
+function numberOfUpperCaseLetter(){
+    let arr = "javaScript is Programming Language";
+   return arr.split("").reduce((previousValue,currentValue,index,array)=>{
+    if(currentValue == array[index].toUpperCase()){
+        previousValue++
+    }
+    if(arr[index] === " "){
+        previousValue--
+    }
+    return previousValue
+   },0)
+}
+console.log(numberOfUpperCaseLetter());
+
+// Q11.  Check if a string is a palindrome using reduce().
+
+function checkPalindrome(){
+    let arr = "madam"
+    let reversingArr = arr.split("").reduce((previousValue,currentValue)=>{
+        previousValue.unshift(currentValue);
+        return previousValue
+    },[])
+    if(reversingArr.join("") === arr){
+        return true
+    }else{
+       return false
+    }
+
+}
+console.log(checkPalindrome());
+
+// Q12. Find the common elements between two given array using reduce().
+
+function commonElement(){
+    let arr1 = [1,2,3,4,5];
+    let arr2 = [3,4,2,6,4,3,1];
+    return arr1.reduce((previousValue,currentValue, _,arr)=>{
+       if(arr2.includes(currentValue)){
+        previousValue.push(currentValue)
+       }
+       return previousValue;
+    },[])
+}
+console.log(commonElement());
+
+// Q13. Remove all vowels from a sentence using reduce().
+
+function RemoveAllVowelsEl(){
+    let vowels = ["a", "e", "i","o","u"];
+    let sentence = "this is javascript code";
+    return sentence.split("").reduce((previousValue,currentValue)=>{
+        if(!vowels.includes(currentValue.toLowerCase())){
+            previousValue +=currentValue
+        }
+        return previousValue
+    },"")
+}
+console.log(RemoveAllVowelsEl());
+
+// Q14.  Remove punctuation marks from a string using reduce().
+
+function RemoveAllPunctionMarks(){
+    let str = "Hello, how are you today?";
+    let punctuationMarks = ['.', ',', ';', ':', '!', '?', '"', "'", '(', ')', '[', ']', '{', '}', '-'];
+
+    return Array.from(str).reduce((previousValue,currentValue)=>{
+        if(!punctuationMarks.includes(currentValue)){
+            previousValue += currentValue;
+        }
+        return previousValue
+    },"")
+    
+}
+console.log(RemoveAllPunctionMarks());
+
+// Q15. Write a function that uses reduce to return the length of the longest string in an array.
+
+function findLongestStringLength(){
+    let arr = ["javascript", "kotlin", "c++", "python", "java"];
+    return arr.reduce((previousValue,currentValue)=>{
+        let currentLength = currentValue.length;
+        return currentLength > previousValue ? currentLength : previousValue;
+    },0)
+}
+console.log(findLongestStringLength());
