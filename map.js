@@ -107,7 +107,6 @@ function productOfEachPairs(){
 console.log(productOfEachPairs());
 
 
-
 //  ================================================= BASIC ENDS HERE AND INTERMEDIATE STARTS HERE ==========================================================
 
 // Q1. Calculate the length of each word in a sentence using map().
@@ -221,3 +220,62 @@ function removeDuplicateWordFromArrStr(){
     })
 }
 console.log(removeDuplicateWordFromArrStr());
+
+
+// Q11.  Given an array of strings, find the number of words in each string using map().
+
+function numberOfWordsInEachStr(){
+    let arr = ["hello this", "is", "javaScript", "code"];
+    return arr.map((element)=>{
+        let words = element.split(" ");
+        return words.length
+    })
+}
+console.log(numberOfWordsInEachStr());
+
+// Q12. Given an array of strings, remove special characters from each string using map().
+
+function removeSpecialCharactersFromEachStr(){
+    let arr = ['Hello!', 'How are you?', 'I love programming!']
+    const regex = /[^\w\s]/g;
+    return arr.map((element)=>{
+        return element.replace(regex,"");
+    });
+};
+console.log(removeSpecialCharactersFromEachStr());
+
+// Q13. Given an array of strings, return a new array with the strings that start with the letter A.
+
+function wordsWhichStartsWithLetteA(){
+    let arr = ["alex", "likes", "Apple"];
+    return arr.map((element,index,arrs)=>{
+        if(element.charAt(0).toLowerCase() === "a"){
+            return arrs[index];
+        }
+    }).filter((value)=> value !== undefined)
+}
+console.log(wordsWhichStartsWithLetteA());
+
+// Q14. Given an array of strings, return a new array with the strings that are palindromes
+
+function checkEveryElementIsPalindromes(){
+    let arr = ["madam", "this","is", "javascript"];
+    let mapping = arr.map((element,index,array)=>{
+        let split = element.split("").reduceRight((acum,value)=>{
+            return acum + value
+        })
+       if(element == split){
+        return element
+       }
+    })
+    return mapping.filter(element=> element !== undefined)
+}
+console.log(checkEveryElementIsPalindromes());
+
+// 15. Given an array of strings, return a new array with the strings that have been ranked by their length.
+
+function stringRankedByLength(){
+    let arr = ["this","is","javascript","code"];
+    return arr.map((value) => value).sort((a,b)=>a.length - b.length)
+}
+console.log(stringRankedByLength());
