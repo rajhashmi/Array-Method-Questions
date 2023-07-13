@@ -109,3 +109,115 @@ console.log(productOfEachPairs());
 
 
 //  ================================================= BASIC ENDS HERE AND INTERMEDIATE STARTS HERE ==========================================================
+
+// Q1. Calculate the length of each word in a sentence using map().
+
+function findLengthOfEachEl(){
+    let str = "this is javaScript code";
+      return str.split(" ").map(value => value.length)
+}
+console.log(findLengthOfEachEl());
+
+// Q2. Reverse each string in a list using map().
+
+function reverseArray(){
+    let arr = ["this","is","javaScript","code"];
+    return arr.map((element,index,arr)=>{
+        let reverseIndex = arr.length - 1 - index;
+        console.log(reverseIndex);
+        return arr[reverseIndex]
+    })
+}
+console.log(reverseArray());
+
+// Q3. Given an array of strings, capitalize the first letter of each word using map().
+
+function CapitalizeFirstLetterOfEl(){
+    let arr = ["javascript","java","kotlin"];
+    return arr.map((value,index)=>{
+        return value.charAt(0).toUpperCase() + arr[index].slice(1)
+    })
+}
+console.log(CapitalizeFirstLetterOfEl());
+
+// Q4. Given an array of strings, convert each string to its reverse using map().
+
+function reverseEachString(){
+    let str = "this is javaScript code";
+    let reverse = str.split("").map(( _ ,index,arr)=>{
+        return arr[arr.length - 1 - index]
+    });
+    return reverse.join("")
+}
+console.log(reverseEachString());
+
+// Q5. Take an array of numbers and make them strings
+
+function numberToString(){
+    let arr = [1,2,3,4,5];
+    return arr.map(element => element.toString())
+}
+console.log(numberToString());
+
+
+// Q6. Given an array of numbers, check if each number is a prime number using map().
+
+function checkEcahNumIsPrimeNum(){
+    let arr = [1,3,5,7];
+   let result = true;
+   let checking = arr.map((element)=>{
+    if(element%2==0){
+        result = false
+    }
+   })
+   return result
+}
+console.log(checkEcahNumIsPrimeNum());
+
+// Q7. Given an array of strings, convert each string to lowercase and remove  using map().
+
+function convertAndRemoveDup(){
+    let str = "this is javaScript code";
+    let result = [];
+    let checking = str.split("").map((element,index,arr)=>{
+      if(!result.includes(element)){
+        result.push(element)
+      }
+    })
+    return result.join("")
+}
+console.log(convertAndRemoveDup());
+
+// Q8. Given an array of numbers, find the minimum number in each subarray using map().
+
+function findMinNumOfEachSubArray(){
+    let arr = [[1,2,3,],[4,5,6],[7,8,9]];
+    return arr.map(element => Math.min(...element))
+}
+console.log(findMinNumOfEachSubArray());
+
+// Q9. Given an array of strings, replace specific words with another word using map().
+
+function stringReplace(target,newWord){
+    let arr = ["this", "is", "c++", "code"] // replace c++ with javaScript
+    return arr.map((element,index)=>{
+        if(element == target){
+           arr[index] = newWord;
+        }
+        return arr[index]
+    })
+
+}
+console.log(stringReplace("c++","javaScript"));
+
+// Q10. Given an array of strings, remove duplicate words from each string using map().
+
+function removeDuplicateWordFromArrStr(){
+    let arr = ["this this", "is", "javaScript", "code"];
+    return arr.map((str)=>{
+        let words = str.split(" ");
+        let uniqueWord = words.filter((word,index)=> words.indexOf(word)=== index);
+        return uniqueWord.join(" ")
+    })
+}
+console.log(removeDuplicateWordFromArrStr());
